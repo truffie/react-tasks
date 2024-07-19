@@ -13,13 +13,13 @@ export default function App() {
 
   return (
     <>
-    <div>допилить useState task 6 </div>
+      <div>допилить useState task 6 </div>
       <NavBar updateTheme={showTasksCurrentTheme} />
       {themes[currentTheme] ? (
         <>
           <div className="list">
             {Object.keys(themes[currentTheme]).map((task, index) => (
-              <Link to={`/${task}`} key={index}>
+              <Link to={`/${task}`} key={index} className="taskLink">
                 <span> {task} </span>
               </Link>
             ))}
