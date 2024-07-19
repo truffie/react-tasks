@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export function Task5() {
   const counterRef = useRef(0);
