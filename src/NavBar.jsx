@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { themes } from './pages';
 import { Link } from 'react-router-dom';
+import Cookie from 'js-cookie';
 
 export function NavBar({ updateTheme }) {
   const typedThemes = Object.keys(themes).reduce((typedTheme, theme) => {
@@ -12,8 +13,6 @@ export function NavBar({ updateTheme }) {
   }, []);
 
   const [topics, setTopics] = useState(typedThemes);
-  const [isVisible, setIsVisible] = useState(false);
-
   function handleSetTopic(e) {
     const id = +e.currentTarget.id;
 
@@ -26,23 +25,28 @@ export function NavBar({ updateTheme }) {
 
     updateTheme(e.currentTarget.dataset.theme);
   }
+  const [isVisible, setIsVisible] = useState(
+    Cookie.get('visibility') === 'true'
+  );
 
+  function handleListVisibility() {
+    setIsVisible((prev) => {
+      const newVisibility = !prev;
+      Cookie.set('visibility', newVisibility, { expires: 1 });
+      return newVisibility;
+    });
+  }
   return (
     <div className="menu">
       <h1
         className={isVisible ? 'open' : undefined}
-        onClick={() => setIsVisible((prev) => !prev)}
+        onClick={handleListVisibility}
       >
         REACT TASK LIST
       </h1>
       {isVisible &&
-        topics.map((theme, index) => (
-          <div
-            id={index}
-            key={index}
-            data-theme={theme.value}
-            onClick={handleSetTopic}
-          >
+        topics.map((theme, i) => (
+          <div id={i} key={i} data-theme={theme.value} onClick={handleSetTopic}>
             <Link to="/" className={theme.isActive ? 'active' : undefined}>
               {theme.value}
             </Link>
