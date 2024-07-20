@@ -67,20 +67,26 @@ button {
 }
 
 .menu {
-  align-self: center;
-  margin: 1rem;
   display: flex;
   flex-direction: column;
+  align-self: center;
+  align-items: stretch;
+  margin: 1rem;
+  gap: 10px;
   h1 {
     text-align: center;
   }
   div {
-    transition: color 0.3s ease;
-    width: 210px;
-    font-size: 2rem;
-    align-self: flex-start;
-    &:hover {
-      color: rgb(195, 227, 120);
+    font-size: 1.75rem;
+    & a {
+      padding: 10px 20px;
+      text-transform: none;
+      display: block;
+      transition: color 0.3s ease-in;
+      &:hover {
+        color: rgb(145, 188, 44);
+        border-color: rgb(145, 188, 44);
+      }
     }
   }
 }
