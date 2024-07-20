@@ -12,6 +12,7 @@ export function NavBar({ updateTheme }) {
   }, []);
 
   const [topics, setTopics] = useState(typedThemes);
+  const [isVisible, setIsVisible] = useState(false);
 
   function handleSetTopic(e) {
     const id = +e.currentTarget.id;
@@ -28,18 +29,25 @@ export function NavBar({ updateTheme }) {
 
   return (
     <div className="menu">
-      <h1>REACT TASK LIST</h1>
-      {topics.map((theme, index) => (
-        <div
-          id={index}
-          key={index}
-          data-theme={theme.value}
-          onClick={handleSetTopic}>
-          <Link to="/" className={theme.isActive ? 'active' : undefined}>
-            {theme.value}
-          </Link>
-        </div>
-      ))}
+      <h1
+        className={isVisible ? 'open' : undefined}
+        onClick={() => setIsVisible((prev) => !prev)}
+      >
+        REACT TASK LIST
+      </h1>
+      {isVisible &&
+        topics.map((theme, index) => (
+          <div
+            id={index}
+            key={index}
+            data-theme={theme.value}
+            onClick={handleSetTopic}
+          >
+            <Link to="/" className={theme.isActive ? 'active' : undefined}>
+              {theme.value}
+            </Link>
+          </div>
+        ))}
     </div>
   );
 }
