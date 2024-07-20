@@ -3,13 +3,15 @@ import { useEffectTasks } from "./useEffect";
 import { useStateTasks } from "./useState";
 import { useRefTasks } from "./useRef";
 import { useMemoTasks } from "./useMemo";
+import { useCallbackTasks } from "./useCallback";
 
 const themes = {
-  default: DefaultTasks,
-  useState: useStateTasks,
-  useEffect: useEffectTasks,
-  useRef: useRefTasks,
-  useMemo: useMemoTasks,
+  DefaultTasks,
+  useStateTasks,
+  useEffectTasks,
+  useRefTasks,
+  useMemoTasks,
+  useCallbackTasks,
 };
 
 export { themes };
