@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { themes } from "./pages";
+import { useState } from 'react';
+import { themes } from './pages';
+import { Link } from 'react-router-dom';
 
 export function NavBar({ updateTheme }) {
   const typedThemes = Object.keys(themes).reduce((typedTheme, theme) => {
@@ -27,18 +28,16 @@ export function NavBar({ updateTheme }) {
 
   return (
     <div className="menu">
-      <h1>Themes</h1>
+      <h1>REACT TASK LIST</h1>
       {topics.map((theme, index) => (
         <div
           id={index}
           key={index}
           data-theme={theme.value}
-          onClick={handleSetTopic}
-          className={theme.isActive ? "active" : null}
-        >
-          <p>
-            {index + 1}. {theme.value}
-          </p>
+          onClick={handleSetTopic}>
+          <Link to="/" className={theme.isActive ? 'active' : undefined}>
+            {theme.value}
+          </Link>
         </div>
       ))}
     </div>
