@@ -5,8 +5,9 @@ import { useRefTasks } from './useRef';
 import { useMemoTasks } from './useMemo';
 import { useCallbackTasks } from './useCallback';
 import { useContextTasks } from './useContext';
+import { useReducerTasks } from './useReducer';
 
-const themes = {
+export const themes = {
   DefaultTasks,
   useStateTasks,
   useEffectTasks,
@@ -14,6 +15,5 @@ const themes = {
   useMemoTasks,
   useCallbackTasks,
   useContextTasks,
+  useReducerTasks,
 };
-
-export { themes };
